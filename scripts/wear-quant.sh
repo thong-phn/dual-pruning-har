@@ -34,10 +34,10 @@ set -e
 # 	done
 # done
 
-for sparsity in 0.2; do
-	python wear_main_loso_channel_pruning.py --preprocessing   --run_name "Channel-pruning-wCEL-ForQuant-${sparsity}" --sparsity_weight "$sparsity" --performance --stage1_model_path "/home/qphan/master-thesis/models/wear/stage1/fft/wear_best_model_subject{subject}_val.pth"
-	python wear_quantize_loso_tflite_ptq.py --stage 7 --preprocessing fft --tflite-output-path "models/tflite/cp-fft/${sparsity}" --log_name "CP-FFT-${sparsity}-quant" --wandb False
-done
+# for sparsity in 0.2; do
+# 	python wear_main_loso_channel_pruning.py --preprocessing   --run_name "Channel-pruning-wCEL-ForQuant-${sparsity}" --sparsity_weight "$sparsity" --performance --stage1_model_path "/home/qphan/master-thesis/models/wear/stage1/fft/wear_best_model_subject{subject}_val.pth"
+# 	python wear_quantize_loso_tflite_ptq.py --stage 7 --preprocessing fft --tflite-output-path "models/tflite/cp-fft/${sparsity}" --log_name "CP-FFT-${sparsity}-quant" --wandb False
+# done
 # python wear_quantize_loso_tflite_ptq.py --stage 7 --preprocessing no --tflite-output-path "models/tflite/cp-no/2.0" --log_name "CP-NO-2.0-quant" --wandb False
 
 # for sparsity in 0.2 2.0; do
@@ -59,8 +59,8 @@ done
 # python wear_quantize_loso_tflite_ptq.py --stage 3 --preprocessing 'dct' --tflite-output-path "models/tflite/wear/dp/dct/stage3/" --log_name "DP-stage3-DCT-quant" --wandb False --mask-log-file 'log/wear_loso_five_stage_results_dct.txt' 
 # python wear_quantize_loso_tflite_ptq.py --stage 5 --preprocessing 'dct' --tflite-output-path "models/tflite/wear/dp/dct/stage5/" --log_name "DP-stage5-DCT-quant" --wandb False --mask-log-file 'log/wear_loso_five_stage_results_dct.txt' 
 
-# python wear_main_loso_five_stage.py --preprocessing 'ihw' --run_name "Channel-pruning-wCEL-ForQuant" --sparsity_weight_bin 0.4 --sparsity_weight_channel 0.2 --performance --stage1_model_path "/home/qphan/master-thesis/models/wear/stage1/ihw/wear_best_model_subject{subject}_val.pth" --wandb False 
-# python wear_quantize_loso_tflite_ptq.py --stage 3 --preprocessing 'ihw' --tflite-output-path "models/tflite/wear/dp/ihw/stage3/" --log_name "DP-stage3-ihw-quant" --wandb False --mask-log-file 'log/wear_loso_five_stage_results_ihw.txt' 
-# python wear_quantize_loso_tflite_ptq.py --stage 5 --preprocessing 'ihw' --tflite-output-path "models/tflite/wear/dp/ihw/stage5/" --log_name "DP-stage5-ihw-quant" --wandb False --mask-log-file 'log/wear_loso_five_stage_results_ihw.txt' 
+# python wear_main_loso_five_stage.py --preprocessing 'ihw' --run_name "FinalRunIHW-swc:0.25" --sparsity_weight_bin 0.4 --sparsity_weight_channel 0.25 --performance --stage1_model_path "/home/qphan/master-thesis/models/wear/stage1/ihw/wear_best_model_subject{subject}_val.pth" --wandb False 
+python wear_quantize_loso_tflite_ptq.py --stage 5 --preprocessing 'ihw' --tflite-output-path "models/tflite/wear/dp/ihw/stage5-swc0.25-swb0.4/" --log_name "WEAR-DP-stage5-ihw-quant-swc0.25-swb0.4" --wandb False --mask-log-file 'log/wear_loso_five_stage_results_ihw.txt' 
+# python wear_quantize_loso_tflite_ptq.py --stage 5 --preprocessing 'ihw' --tflite-output-path "models/tflite/wear/dp/ihw/stage5/" --log_name "DP-stage5-ihw-quant" --wandb False --mask-log-file 'log/wear_loso_five_stage_results_ihw.txt' --subjects 1
 
 
