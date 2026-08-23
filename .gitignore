@@ -9,12 +9,14 @@ wear/
 fig/
 log/
 lib/__pycache__
+models/
 
 # Other
 .vscode/
 wandb/
 .github/
 
+#---------------------------------------
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
