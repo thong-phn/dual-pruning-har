@@ -4,11 +4,11 @@ wandb/
 # Dataset
 uci-har/
 wear/
-!models/wear
-!models/tflite/wear
 .vscode/
+.github
 fig/
 log/
+lib/__pycache__
 
 # Other
 .vscode/
