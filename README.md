@@ -11,6 +11,21 @@ The implementation supports the UCI-HAR and WEAR datasets, Leave-One-Subject-Out
 
 > This repository does **not** include datasets, trained checkpoints, ST Edge AI Cloud credentials, or generated firmware. The hardware measurements reported in the paper were produced by submitting exported models to the public ST Edge AI Cloud testbench.
 
+## Demonstration
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="img/hardware-setup.jpeg" alt="HAR inference hardware setup" width="280"><br>
+      <sub>On-device HAR inference setup</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="img/results-demo.png" alt="Inference latency comparison" width="280"><br>
+      <sub>Typical and proposed method latency</sub>
+    </td>
+  </tr>
+</table>
+
 ## Paper at a glance
 
 The paper evaluates time-domain (`no`), FFT (`fft`), DCT (`dct`), and IHW (`ihw`) inputs with a CNN of approximately 37k parameters. Each training run uses LOSO folds: one training subject is held out for validation and the provided test split is evaluated for every fold.
