@@ -1,7 +1,5 @@
 # Dual-Stage Pruning for Human Activity Recognition on Microcontrollers
 
-Reference implementation for the experiments in **"Dual-Stage Pruning for Human Activity Recognition on Microcontrollers"** by Quang Thong Phan and Kristof Van Laerhoven.
-
 The project trains a lightweight depthwise-separable 1D CNN for wearable Human Activity Recognition (HAR), then applies structured pruning in two sequential stages:
 
 1. **Input-bin pruning:** a straight-through Gumbel-Softmax mask selects informative FFT, DCT, or Integer Haar Wavelet (IHW) bins.
@@ -9,7 +7,8 @@ The project trains a lightweight depthwise-separable 1D CNN for wearable Human A
 
 The implementation supports the UCI-HAR and WEAR datasets, Leave-One-Subject-Out (LOSO) evaluation, post-training TFLite quantization, and the local part of the ST Edge AI Cloud benchmarking workflow.
 
-> This repository does **not** include datasets, trained checkpoints, ST Edge AI Cloud credentials, or generated firmware. The hardware measurements reported in the paper were produced by submitting exported models to the public ST Edge AI Cloud testbench.
+> This repository does not include datasets, trained checkpoints, ST Edge AI Cloud credentials, or generated firmware. The hardware measurements reported in the paper were produced by submitting exported models to the public ST Edge AI Cloud testbench.
+
 
 ## Demonstration
 
@@ -138,7 +137,7 @@ python wear_main_loso_five_stage.py \
 
 The default configuration trains 60 epochs at each stage (300 stage-epochs per fold), with Adam, learning rate `1e-3`, batch size 64, dropout 0.4, and Gumbel temperature scheduled from 10 to 1. Use `--epochs_stage1` through `--epochs_stage5` to shorten a setup check; do not treat a shortened run as a reproduction of the reported results.
 
-### Other experiment variants
+<!-- ### Other experiment variants
 
 | Goal | UCI-HAR entry point | WEAR entry point |
 | --- | --- | --- |
@@ -158,7 +157,7 @@ python uci_main_loso_input_pruning.py \
   --performance
 ```
 
-Use `--stage<N>_model_path` to reuse a checkpoint and skip that stage. A `{subject}` placeholder is supported for Stage 1 paths, which is useful when reusing a separate checkpoint per LOSO fold.
+Use `--stage<N>_model_path` to reuse a checkpoint and skip that stage. A `{subject}` placeholder is supported for Stage 1 paths, which is useful when reusing a separate checkpoint per LOSO fold. -->
 
 ## Outputs
 
