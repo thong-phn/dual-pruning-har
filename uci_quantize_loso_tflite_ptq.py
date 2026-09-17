@@ -7,7 +7,7 @@ Note
     Stage 7: Channel pruning
 
 Pipeline:  PyTorch .pth  →  ONNX  →  TF SavedModel (via onnx2tf)  →  TFLite (PTQ)
-Configs:   W8A16_FLOAT_IO  |  W8A16_INT_IO  |  W8A8_INT_IO
+Config:    W8A16_INT_IO
 
 Usage:
     python uci_quantize_loso_tflite_ptq.py --stage 1 --subjects '1'
@@ -174,7 +174,6 @@ def _make_representative_gen(dataset, n_samples: int = 256):
 
 
 # ── TFLite conversion ────────────────────────────────────────────────────────
-# PTQ_CONFIGS = ["W8A16_FLOAT_IO", "W8A16_INT_IO", "W8A8_INT_IO"]
 PTQ_CONFIGS = ["W8A16_INT_IO"]
 
 
@@ -207,14 +206,6 @@ def _convert_to_tflite(saved_model_dir: str, ptq_config: str, rep_gen):
         ]
         converter.inference_input_type = tf.int16
         converter.inference_output_type = tf.int16
-    elif ptq_config == "W8A8_INT_IO":
-        converter.target_spec.supported_ops = [
-            tf.lite.OpsSet.TFLITE_BUILTINS_INT8,
-            tf.lite.OpsSet.TFLITE_BUILTINS,
-        ]
-        converter.inference_input_type = tf.int8
-        converter.inference_output_type = tf.int8
-
     import sys as _sys
 
     stderr_fd = _sys.stderr.fileno()

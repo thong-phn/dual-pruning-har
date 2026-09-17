@@ -157,11 +157,7 @@ The primary five-stage logs are `log/uci_loso_five_stage_results_<preprocessing>
 
 ## TFLite export and post-training quantization
 
-The quantization scripts export a PyTorch checkpoint through ONNX and `onnx2tf`, then generate and evaluate these TFLite configurations:
-
-- `W8A16_FLOAT_IO`
-- `W8A16_INT_IO`
-- `W8A8_INT_IO`
+The quantization scripts export a PyTorch checkpoint through ONNX and `onnx2tf`, then generate and evaluate the `W8A16_INT_IO` TFLite configuration (8-bit weights, 16-bit activations, and integer input/output tensors).
 
 For Stage 3 and Stage 5 models, pass the five-stage log so the exporter can recover the learned hard input mask. The sample below exports one UCI-HAR DCT dual-pruned fold after the five-stage training command above:
 

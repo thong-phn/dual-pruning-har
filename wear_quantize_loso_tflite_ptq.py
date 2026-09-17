@@ -2,7 +2,7 @@
 TFLite Post-Training Quantization for WEAR LOSO Models (Stage 1, 3, 5).
 
 Pipeline:  PyTorch .pth  →  ONNX  →  TF SavedModel (via onnx2tf)  →  TFLite (PTQ)
-Configs:   W8A16_FLOAT_IO  |  W8A16_INT_IO 
+Config:    W8A16_INT_IO
 
 Usage:
     python wear_quantize_loso_tflite_ptq.py --stage 1 --subjects '0'
@@ -196,13 +196,7 @@ def _convert_to_tflite(saved_model_dir: str, ptq_config: str, rep_gen):
     converter.optimizations = [tf.lite.Optimize.DEFAULT]
     converter.representative_dataset = rep_gen
 
-    if ptq_config == "W8A16_FLOAT_IO":
-        converter.target_spec.supported_ops = [
-            tf.lite.OpsSet.EXPERIMENTAL_TFLITE_BUILTINS_ACTIVATIONS_INT16_WEIGHTS_INT8,
-            tf.lite.OpsSet.TFLITE_BUILTINS,
-        ]
-
-    elif ptq_config == "W8A16_INT_IO":
+    if ptq_config == "W8A16_INT_IO":
         converter.target_spec.supported_ops = [
             tf.lite.OpsSet.EXPERIMENTAL_TFLITE_BUILTINS_ACTIVATIONS_INT16_WEIGHTS_INT8,
             tf.lite.OpsSet.TFLITE_BUILTINS,
