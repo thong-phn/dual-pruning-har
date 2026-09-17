@@ -53,8 +53,6 @@ The training entry points import Weights & Biases (`wandb`). Log in before enabl
 wandb login
 ```
 
-For a non-interactive UCI five-stage run, set `WANDB_MODE=disabled`. This is preferable to passing `--wandb False` to that particular script, whose boolean option is legacy and does not parse the string `False` as expected.
-
 ## Dataset preparation
 
 Datasets are intentionally excluded from version control. Place them at the repository root using the following layouts; the scripts resolve these paths automatically.
